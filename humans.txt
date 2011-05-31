@@ -1,0 +1,10 @@
+Ricardo Tomasi
+Site: http://ricardo.cc/
+Twitter: @ricardobeat
+Location: Porto Alegre, Brazil
+
+Standards: HTML5, CSS3
+Components: Modernizr
+Software: node.js, less.js, coffeescript
+  
+Thanks for visiting :)
