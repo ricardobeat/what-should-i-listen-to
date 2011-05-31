@@ -8,7 +8,11 @@ api_key = require('./apikey')
 app = express.createServer()
 
 app.configure ->
-	app.use express.staticProvider "#{__dirname}/public"
+	app.use express.compiler
+		src: "#{__dirname}/public"
+		enable: ['less', 'coffeescript']
+	app.use express.static "#{__dirname}/public"
+	app.use express.errorHandler()
 
 app.get '/recommend/:user', (req, res) ->
 	params = 

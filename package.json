@@ -1,0 +1,20 @@
+{
+  "author": "Ricardo Tomasi <ricardobeat@gmail.com> (http://ricardo.cc/)",
+  "name": "whatshouldilistento",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ricardobeat/what-should-i-listen-to.git"
+  },
+  "main": "app.coffee",
+  "engines": {
+    "node": ">=0.4.8"
+  },
+  "dependencies": {
+    "express": "",
+    "request": "",
+    "less": "",
+    "coffee-script": ""
+  },
+  "devDependencies": {}
+}
