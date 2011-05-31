@@ -30,16 +30,26 @@ makeNoise .2
 jQuery ($) ->
 
 	# button
-	button = $ '#recommend'
+	recommend = $ '#recommend'
+	artist    = $ '#artist'
+	username  = $ '#username'
+	
+	if window.localStorage and localStorage.username
+		username.val localStorage.username
 
 	# random phrase
 	phrases = ["I need to know.", "I have no idea.", "Hmmmmm...", "How about..."]
 	phrase = phrases[~~(Math.random()*phrases.length)]
 
-	button.text phrase
+	recommend.text phrase
+	
+	showRecommendation = (result) ->
+		artist.text result
+		recommend.text 'Try again'
+		recommend.addClass 'used'
 	
 	# recommendation
-	button.click ->
-		user = $('#username').val()
-		$.get "/recommendation/#{user}", (response) ->
-			console.log response
+	recommend.click ->
+		user = username.val()
+		window.localStorage and localStorage.username = user
+		$.get "/recommend/#{user}", showRecommendation, 'text'
