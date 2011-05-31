@@ -3,12 +3,17 @@ express = require 'express'
 request = require 'request'
 qs      = require 'querystring'
 
+api_key = require('./apikey')
+
 app = express.createServer()
+
+app.configure ->
+	app.use express.staticProvider "#{__dirname}/public"
 
 app.get '/recommend/:user', (req, res) ->
 	params = 
 		method  : 'library.getartists'
-		api_key : 'bee1fcef168222380ab5cff83403199c'
+		api_key : api_key
 		user    : req.params.user
 		page    : Math.floor(Math.random()*1500)
 		limit   : 1

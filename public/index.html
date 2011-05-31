@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <title>What should I listen to?</title>
+  
+  <meta name="description" content="" />
+	<meta name="author" content="" />
+	
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="stylesheet" href="styles/base.css" />
+  
+  <!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+	<script src="scripts/base.js"></script>
+  
+</head>
+<body>
+  <header id="header">
+    <h1>What should I listen to?</h1>
+    <h2>want to listen to one of your favorite bands but can't remember/decide which? get a recommendation here.</h2>
+  </header>
+  
+  <section id="main" role="main">
+    <div id="artist"></div>
+    <button class="f1" id="recommend">Please tell me.</button>
+    <form action="/recommend" method="get">
+      <fieldset id="" class="">
+        <label>last.fm username:</label>
+        <input type="text" placeholder="ex: superbife" id="username" />
+      </fieldset>
+    </form>
+  </section>
+  
+  <footer>
+    <p>this site was made by <a href="http://ricardo.cc/">Ricardo Tomasi</a> - last update May 2011</p>
+  </footer>
+  
+</body>
+</html>
