@@ -11,10 +11,10 @@ app.configure ->
 	app.use express.cookieParser()
 	app.use express.session
 		secret: 'nothingspecial'
+	app.use express.static "#{__dirname}/public"
 	app.use express.compiler
 		src: "#{__dirname}/public"
-		enable: ['less', 'coffeescript']
-	app.use express.static "#{__dirname}/public"
+		enable: ['coffeescript', 'less']
 	app.use express.errorHandler()
 
 app.get '/recommend/:user', (req, res) ->
@@ -33,7 +33,6 @@ app.get '/recommend/:user', (req, res) ->
 		format  : 'json'
 		
 	request { uri: "http://ws.audioscrobbler.com/2.0/?#{qs.stringify params}"}, (err, response, body) ->
-		
 		try
 			body = JSON.parse body
 		catch e
@@ -46,3 +45,4 @@ app.get '/recommend/:user', (req, res) ->
 			res.end ""
 		
 app.listen 10317
+console.log "server running on port 10317"
