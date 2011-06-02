@@ -30,9 +30,10 @@ makeNoise .2
 jQuery ($) ->
 
 	# button
-	recommend = $ '#recommend'
-	artist    = $ '#artist'
-	username  = $ '#username'
+	recommend    = $ '#recommend'
+	artist       = $ '#artist'
+	username     = $ '#username'
+	errorMessage = $ '#errorMessage'
 	
 	if window.localStorage and localStorage.username
 		username.val localStorage.username
@@ -44,6 +45,7 @@ jQuery ($) ->
 	recommend.text phrase
 	
 	showRecommendation = (result) ->
+		if not result then errorMessage.show() else errorMessage.hide()
 		artist.text result or 'The Beatles (sorry, something went wrong here)'
 		recommend.text 'Try again'
 		recommend.addClass 'used'
