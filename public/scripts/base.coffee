@@ -51,5 +51,6 @@ jQuery ($) ->
 	# recommendation
 	recommend.click ->
 		user = username.val()
-		window.localStorage and localStorage.username = user
+		user and window.localStorage and localStorage.username = user
+		user or= 'superbife'
 		$.get "/recommend/#{user}", showRecommendation, 'text'
