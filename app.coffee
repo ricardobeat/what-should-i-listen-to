@@ -3,7 +3,7 @@ express = require 'express'
 request = require 'request'
 qs      = require 'querystring'
 
-api_key = require('./apikey')
+api_key = require('./apiKey')
 
 app = express.createServer()
 
