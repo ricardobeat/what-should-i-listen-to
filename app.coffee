@@ -36,7 +36,7 @@ app.get '/recommend/:user', (req, res) ->
 		catch e
 		
 		if result?.artists?
-			req.session.totalPages = result.artists['@attr'].totalPages
+			req.session.totalPages = result.artists['@attr']?.totalPages
 			res.end result.artists.artist.name
 		else
 			res.end 'The Beatles (sorry, something went wrong here)'
