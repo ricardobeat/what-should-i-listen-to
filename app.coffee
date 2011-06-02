@@ -5,6 +5,8 @@ qs      = require 'querystring'
 
 api_key = require('/apiKey.js')
 
+default = 'The Beatles (sorry, something went wrong here)'
+
 app = express.createServer()
 
 app.configure ->
@@ -33,12 +35,12 @@ app.get '/recommend/:user', (req, res) ->
 	request.get { uri: "http://ws.audioscrobbler.com/2.0/?#{qs.stringify params}" }, (err, response, body) ->
 		try
 			result = JSON.parse body
+			if result?.artists?
+				req.session.totalPages = result.artists['@attr']?.totalPages
+				res.end result.artists.artist?.name
+			else
+				res.end default
 		catch e
-		
-		if result?.artists?
-			req.session.totalPages = result.artists['@attr']?.totalPages
-			res.end result.artists.artist.name
-		else
-			res.end 'The Beatles (sorry, something went wrong here)'
+			res.end default
 		
 app.listen 10317
