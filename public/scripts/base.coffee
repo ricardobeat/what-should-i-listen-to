@@ -44,7 +44,7 @@ jQuery ($) ->
 	recommend.text phrase
 	
 	showRecommendation = (result) ->
-		artist.text result
+		artist.text result or 'The Beatles (sorry, something went wrong here)'
 		recommend.text 'Try again'
 		recommend.addClass 'used'
 	
@@ -53,4 +53,8 @@ jQuery ($) ->
 		user = username.val()
 		user and window.localStorage and localStorage.username = user
 		user or= 'superbife'
-		$.get "/recommend/#{user}", showRecommendation, 'text'
+		$.ajax
+			url: "/recommend/#{user}"
+			success: showRecommendation
+			error: showRecommendation
+			type: 'text'
