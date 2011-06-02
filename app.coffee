@@ -32,15 +32,11 @@ app.get '/recommend/:user', (req, res) ->
 		limit   : 1
 		format  : 'json'
 		
-	request.get { uri: "http://ws.audioscrobbler.com/2.0/?#{qs.stringify params}" }, (err, response, body) ->
-		try
-			result = JSON.parse body
-			if result?.artists?
-				req.session.totalPages = result.artists['@attr']?.totalPages
-				res.end result.artists.artist?.name
-			else
-				res.end defaultResponse
-		catch e
+	request.get { uri: "http://ws.audioscrobbler.com/2.0/?#{qs.stringify params}", json: true }, (err, response, body) ->
+		if result?.artists
+			req.session.totalPages = result.artists['@attr']?.totalPages or 900
+			res.end result.artists.artist?.name or defaultResponse
+		else
 			res.end defaultResponse
 		
 app.listen 10317
