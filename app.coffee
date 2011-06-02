@@ -20,6 +20,8 @@ app.configure ->
 	app.use express.errorHandler()
 
 app.get '/recommend/:user', (req, res) ->
+
+	res.header 'Content-Type', 'text/plain'
 	
 	limit = req.session.totalPages or 999
 	page  = Math.floor(Math.random()*limit)
@@ -32,7 +34,7 @@ app.get '/recommend/:user', (req, res) ->
 		limit   : 1
 		format  : 'json'
 		
-	request.get { uri: "http://ws.audioscrobbler.com/2.0/?#{qs.stringify params}", json: true }, (err, response, result) ->
+	request { uri: "http://ws.audioscrobbler.com/2.0/?#{qs.stringify params}", json: true }, (err, response, result) ->
 		if result?.artists
 			req.session.totalPages = result.artists['@attr']?.totalPages or 900
 			res.end result.artists.artist?.name or defaultResponse

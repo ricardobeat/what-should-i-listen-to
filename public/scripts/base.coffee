@@ -57,4 +57,5 @@ jQuery ($) ->
 			url: "/recommend/#{user}"
 			success: showRecommendation
 			error: showRecommendation
-			type: 'text'
+			type: 'GET'
+			dataType: 'text'
