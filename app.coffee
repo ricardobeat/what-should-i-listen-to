@@ -5,7 +5,7 @@ qs      = require 'querystring'
 
 api_key = require('./apiKey')
 
-default = 'The Beatles (sorry, something went wrong here)'
+defaultResponse = 'The Beatles (sorry, something went wrong here)'
 
 app = express.createServer()
 
@@ -39,8 +39,8 @@ app.get '/recommend/:user', (req, res) ->
 				req.session.totalPages = result.artists['@attr']?.totalPages
 				res.end result.artists.artist?.name
 			else
-				res.end default
+				res.end defaultResponse
 		catch e
-			res.end default
+			res.end defaultResponse
 		
 app.listen 10317
