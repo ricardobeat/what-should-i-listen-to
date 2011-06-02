@@ -46,7 +46,7 @@ jQuery ($) ->
 	
 	showRecommendation = (result) ->
 		if not result then errorMessage.show() else errorMessage.hide()
-		artist.text result or 'The Beatles (sorry, something went wrong here)'
+		artist.text result or 'The Beatles'
 		recommend.text 'Try again'
 		recommend.addClass 'used'
 	
