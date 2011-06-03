@@ -17,7 +17,7 @@ app.configure ->
 	#	enable: ["less","coffeescript"]
 		
 	app.use express.static "#{__dirname}/public"
-	app.use express.errorHandler()
+	#app.use express.errorHandler()
 
 app.get '/recommend/:user', (req, res) ->
 
