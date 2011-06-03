@@ -11,10 +11,12 @@ app.configure ->
 	app.use express.cookieParser()
 	app.use express.session
 		secret: 'nothingspecial'
-	app.use express.static "#{__dirname}/public"
+	
 	app.use express.compiler
-		src: "#{__dirname}/public"
-		enable: ['coffeescript', 'less']
+		src: __dirname + "/public"
+		enable: ["coffeescript"]
+		
+	app.use express.static "#{__dirname}/public"
 	app.use express.errorHandler()
 
 app.get '/recommend/:user', (req, res) ->
