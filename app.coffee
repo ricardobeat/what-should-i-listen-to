@@ -12,9 +12,9 @@ app.configure ->
 	app.use express.session
 		secret: 'nothingspecial'
 	
-	app.use express.compiler
-		src: __dirname + "/public"
-		enable: ["coffeescript"]
+	#app.use express.compiler
+	#	src: __dirname + "/public"
+	#	enable: ["less","coffeescript"]
 		
 	app.use express.static "#{__dirname}/public"
 	app.use express.errorHandler()
