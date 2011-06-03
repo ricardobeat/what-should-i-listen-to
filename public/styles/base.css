@@ -330,7 +330,7 @@ body {
   font-size: 40px;
   font-family: "Lucida Fax", Georgia, Helvetica, Arial, sans-serif;
   color: #ececef;
-  line-height: 3;
+  padding: 40px 0 20px;
   text-shadow: -1px -1px 0 #000, 0 0 9px rgba(150,150,255,.5);
   -moz-text-shadow: -1px -1px 0 #000, 0 0 9px rgba(150,150,255,.5);
   -webkit-text-shadow: -1px -1px 0 #000, 0 0 9px rgba(150,150,255,.5);
