@@ -52,10 +52,10 @@ jQuery ($) ->
 	
 	# recommendation
 	recommend.click ->
-	    _gaq? and _gaq.push ['_trackEvent', 'What should I listen to?', 'Recommendation']
 		user = username.val()
 		user and window.localStorage and localStorage.username = user
 		user or= 'superbife'
+		_gaq? and _gaq.push ['_trackEvent', 'What should I listen to?', 'Recommendation', user]
 		$.ajax
 			url: "/recommend/#{user}"
 			success: showRecommendation
