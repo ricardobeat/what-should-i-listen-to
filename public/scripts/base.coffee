@@ -51,14 +51,15 @@ jQuery ($) ->
 		recommend.addClass 'used'
 	
 	# recommendation
-	recommend.click ->
+	recommend.click (e) ->
+	    e.preventDefault()
 		user = username.val()
 		user and window.localStorage and localStorage.username = user
 		user or= 'superbife'
-		_gaq? and _gaq.push ['_trackEvent', 'What should I listen to?', 'Recommendation', user]
 		$.ajax
 			url: "/recommend/#{user}"
 			success: showRecommendation
 			error: showRecommendation
 			type: 'GET'
 			dataType: 'text'
+		_gaq? and _gaq.push ['_trackEvent', 'What should I listen to?', 'Recommendation', user]
