@@ -52,7 +52,7 @@ jQuery ($) ->
 	
 	# recommendation
 	recommend.click (e) ->
-	    e.preventDefault()
+		e.preventDefault()
 		user = username.val()
 		user and window.localStorage and localStorage.username = user
 		user or= 'superbife'
