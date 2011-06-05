@@ -31,7 +31,7 @@
   };
   makeNoise(.2);
   jQuery(function($) {
-    var artist, errorMessage, phrase, phrases, recommend, showRecommendation, username;
+    var artist, errorMessage, phrase, phrases, recommend, showRecommendation, user, username;
     recommend = $('#recommend');
     artist = $('#artist');
     username = $('#username');
@@ -52,19 +52,19 @@
       recommend.text('Try again');
       return recommend.addClass('used');
     };
-    return recommend.click(function() {
-      var user;
-      user = username.val();
-      user && window.localStorage && (localStorage.username = user);
-      user || (user = 'superbife');
-      (typeof _gaq !== "undefined" && _gaq !== null) && _gaq.push(['_trackEvent', 'What should I listen to?', 'Recommendation', user]);
-      return $.ajax({
-        url: "/recommend/" + user,
-        success: showRecommendation,
-        error: showRecommendation,
-        type: 'GET',
-        dataType: 'text'
-      });
+    recommend.click(function(e) {
+      return e.preventDefault();
     });
+    user = username.val();
+    user && window.localStorage && (localStorage.username = user);
+    user || (user = 'superbife');
+    $.ajax({
+      url: "/recommend/" + user,
+      success: showRecommendation,
+      error: showRecommendation,
+      type: 'GET',
+      dataType: 'text'
+    });
+    return (typeof _gaq !== "undefined" && _gaq !== null) && _gaq.push(['_trackEvent', 'What should I listen to?', 'Recommendation', user]);
   });
 }).call(this);
