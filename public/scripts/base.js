@@ -57,6 +57,7 @@
       user = username.val();
       user && window.localStorage && (localStorage.username = user);
       user || (user = 'superbife');
+      (typeof _gaq !== "undefined" && _gaq !== null) && _gaq.push(['_trackEvent', 'What should I listen to?', 'Recommendation', user]);
       return $.ajax({
         url: "/recommend/" + user,
         success: showRecommendation,
