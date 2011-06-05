@@ -1,0 +1,7 @@
+#!/bin/sh
+lessc public/styles/base.less public/styles/base.css
+wait $!
+git add public/styles/base.css
+coffee -c public/scripts/base.coffee
+wait $!
+git add public/scripts/base.js
