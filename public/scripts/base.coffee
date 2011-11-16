@@ -46,7 +46,7 @@ jQuery ($) ->
 	
 	showRecommendation = (result) ->
 		if not result then errorMessage.show() else errorMessage.hide()
-		artist.text result or 'The Beatles'
+		artist.html "<a href=\"http://grooveshark.com/#/search?q=#{escape result}\">result</a>" or 'The Beatles'
 		recommend.text 'Try again'
 		recommend.addClass 'used'
 	
@@ -63,3 +63,8 @@ jQuery ($) ->
 			type: 'GET'
 			dataType: 'text'
 		_gaq? and _gaq.push ['_trackEvent', 'What should I listen to?', 'Recommendation', user]
+		
+	recommend.next('form').submit (e) ->
+	    e.preventDefault()
+	    recommend.click()
+	

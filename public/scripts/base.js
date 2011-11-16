@@ -48,7 +48,7 @@
       } else {
         errorMessage.hide();
       }
-      artist.text(result || 'The Beatles');
+      artist.html(("<a href=\"http://grooveshark.com/#/search?q=" + (escape(result)) + "\">result</a>") || 'The Beatles');
       recommend.text('Try again');
       return recommend.addClass('used');
     };
@@ -65,6 +65,10 @@
       type: 'GET',
       dataType: 'text'
     });
-    return (typeof _gaq !== "undefined" && _gaq !== null) && _gaq.push(['_trackEvent', 'What should I listen to?', 'Recommendation', user]);
+    (typeof _gaq !== "undefined" && _gaq !== null) && _gaq.push(['_trackEvent', 'What should I listen to?', 'Recommendation', user]);
+    return recommend.next('form').submit(function(e) {
+      e.preventDefault();
+      return recommend.click();
+    });
   });
 }).call(this);
