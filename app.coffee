@@ -46,5 +46,5 @@ app.get '/recommend/:user', (req, res) ->
 		else
 			res.end ""
 		
-app.listen 10320
+app.listen 12584
 console.log "server running on port 10320"
