@@ -60,7 +60,7 @@
     user || (user = 'superbife');
     $.ajax({
       url: "/recommend/" + user,
-      success: showRecommendation,
+      success: showRecommendation, 
       error: showRecommendation,
       type: 'GET',
       dataType: 'text'
