@@ -16,12 +16,12 @@ app.configure ->
 
 app.get '/recommend/:user', (req, res) ->
 
+	console.log "recommendation for #{req.params.user}, #{req.session?}"
+
 	res.header 'Content-Type', 'text/plain'
 	
 	limit = req.session.totalPages or 999
 	page  = Math.floor(Math.random()*limit)
-
-	console.log "params"
 	
 	params = 
 		method  : 'library.getartists'
