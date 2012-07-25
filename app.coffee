@@ -20,6 +20,8 @@ app.get '/recommend/:user', (req, res) ->
 	
 	limit = req.session.totalPages or 999
 	page  = Math.floor(Math.random()*limit)
+
+	console.log "params"
 	
 	params = 
 		method  : 'library.getartists'
@@ -28,6 +30,8 @@ app.get '/recommend/:user', (req, res) ->
 		page    : page
 		limit   : 1
 		format  : 'json'
+
+	console.log "requesting artists for #{params.user}"
 		
 	request "http://ws.audioscrobbler.com/2.0/?#{qs.stringify params}", (err, response, body) ->
 		try
