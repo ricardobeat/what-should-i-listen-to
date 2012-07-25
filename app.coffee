@@ -3,7 +3,7 @@ express = require 'express'
 request = require 'request'
 qs      = require 'querystring'
 
-api_key = require('./apiKey')
+api_key = process.env.lastfmApiKey
 
 app = express.createServer()
 
@@ -46,5 +46,5 @@ app.get '/recommend/:user', (req, res) ->
 		else
 			res.end ""
 		
-app.listen 10320
+app.listen 12584
 console.log "server running on port 10320"
