@@ -3,7 +3,7 @@ express = require 'express'
 request = require 'request'
 qs      = require 'querystring'
 
-api_key = process.env.lastfmApiKey
+api_key = process.env.lastfmApiKey or require('./apiKey')
 
 app = express.createServer()
 
@@ -29,7 +29,7 @@ app.get '/recommend/:user', (req, res) ->
 		limit   : 1
 		format  : 'json'
 		
-	request { uri: "http://ws.audioscrobbler.com/2.0/?#{qs.stringify params}"}, (err, response, body) ->
+	request "http://ws.audioscrobbler.com/2.0/?#{qs.stringify params}", (err, response, body) ->
 		try
 			body = JSON.parse body
 		catch e
@@ -41,5 +41,5 @@ app.get '/recommend/:user', (req, res) ->
 		else
 			res.end ""
 		
-app.listen 80
-console.log "server running on port 80"
+app.listen 3000
+console.log "server running on port 3000"

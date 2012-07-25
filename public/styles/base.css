@@ -87,7 +87,8 @@ nav,
 section {
   display: block;
 }
-blockquote, q {
+blockquote,
+q {
   quotes: none;
 }
 blockquote:before,
@@ -111,7 +112,8 @@ mark {
 del {
   text-decoration: line-through;
 }
-abbr[title], dfn[title] {
+abbr[title],
+dfn[title] {
   border-bottom: 1px dotted;
   cursor: help;
 }
@@ -127,7 +129,8 @@ hr {
   margin: 1em 0;
   padding: 0;
 }
-input, select {
+input,
+select {
   vertical-align: middle;
 }
 body {
@@ -149,16 +152,19 @@ samp {
 html {
   overflow-y: scroll;
 }
-a:hover, a:active {
+a:hover,
+a:active {
   outline: none;
 }
-ul, ol {
+ul,
+ol {
   margin-left: 2em;
 }
 ol {
   list-style-type: decimal;
 }
-nav ul, nav li {
+nav ul,
+nav li {
   margin: 0;
   list-style: none;
   list-style-image: none;
@@ -166,13 +172,15 @@ nav ul, nav li {
 small {
   font-size: 85%;
 }
-strong, th {
+strong,
+th {
   font-weight: bold;
 }
 td {
   vertical-align: top;
 }
-sub, sup {
+sub,
+sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
@@ -211,7 +219,8 @@ select,
 textarea {
   margin: 0;
 }
-input:invalid, textarea:invalid {
+input:invalid,
+textarea:invalid {
   border-radius: 1px;
   -moz-box-shadow: 0px 0px 5px red;
   -webkit-box-shadow: 0px 0px 5px red;
@@ -248,13 +257,16 @@ h5,
 h6 {
   font-weight: bold;
 }
-a, a:active, a:visited {
+a,
+a:active,
+a:visited {
   color: #607890;
 }
 a:hover {
   color: #036;
 }
-html, body {
+html,
+body {
   min-height: 100%;
   height: 100%;
 }
@@ -312,7 +324,8 @@ button:active {
   top: 1px;
   outline: 0;
 }
-button:hover, button:focus {
+button:hover,
+button:focus {
   background: #e23030 !important;
 }
 button::-moz-focus-inner {
@@ -373,15 +386,19 @@ body {
   -o-transition: all 0.5s;
   transition: all 0.5s;
 }
-#main input:hover, #main input:focus {
+#main input:hover,
+#main input:focus {
   opacity: 1;
 }
 #artist {
-  color: #efefef;
   font-size: 32px;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
   -moz-text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
   -webkit-text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+}
+#artist a {
+  color: #efefef;
+  text-decoration: none;
 }
 #errorMessage {
   color: #ef8989;
