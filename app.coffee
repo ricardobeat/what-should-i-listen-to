@@ -3,7 +3,7 @@ express = require 'express'
 request = require 'request'
 qs      = require 'querystring'
 
-api_key = process.env.lastfmApiKey or require('./apiKey')
+api_key = process.env.lastfmApiKey
 
 app = express.createServer()
 
@@ -15,8 +15,6 @@ app.configure ->
 	app.use express.static "#{__dirname}/public"
 
 app.get '/recommend/:user', (req, res) ->
-
-	console.log "recommendation for #{req.params.user}, #{req.session?}"
 
 	res.header 'Content-Type', 'text/plain'
 	
@@ -31,7 +29,7 @@ app.get '/recommend/:user', (req, res) ->
 		limit   : 1
 		format  : 'json'
 
-	console.log "requesting artists for #{params.user}"
+	console.log "Requesting artists for #{params.user}"
 		
 	request "http://ws.audioscrobbler.com/2.0/?#{qs.stringify params}", (err, response, body) ->
 		try
