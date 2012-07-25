@@ -14,7 +14,11 @@
     "express": "",
     "request": "",
     "less": "",
-    "coffee-script": ""
+    "coffee-script": "*"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "subdomain": "listento",
+  "scripts": {
+    "start": "server.js"
+  }
 }

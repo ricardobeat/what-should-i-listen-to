@@ -11,13 +11,8 @@ app.configure ->
 	app.use express.cookieParser()
 	app.use express.session
 		secret: 'nothingspecial'
-	
-	#app.use express.compiler
-	#	src: __dirname + "/public"
-	#	enable: ["less","coffeescript"]
 		
 	app.use express.static "#{__dirname}/public"
-	#app.use express.errorHandler()
 
 app.get '/recommend/:user', (req, res) ->
 
@@ -46,10 +41,5 @@ app.get '/recommend/:user', (req, res) ->
 		else
 			res.end ""
 		
-<<<<<<< HEAD
-app.listen port = process.env.app_port or 3001
-console.log "server running on port #{port}"
-=======
-app.listen 12584
-console.log "server running on port 10320"
->>>>>>> 477c461b10aa80e69ff3f269faf4e329e9860da1
+app.listen 80
+console.log "server running on port 80"
