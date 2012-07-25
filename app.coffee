@@ -3,11 +3,7 @@ express = require 'express'
 request = require 'request'
 qs      = require 'querystring'
 
-<<<<<<< HEAD
 api_key = process.env.lastfmApiKey or require('./apiKey')
-=======
-api_key = process.env.lastfmApiKey
->>>>>>> 477c461b10aa80e69ff3f269faf4e329e9860da1
 
 app = express.createServer()
 
