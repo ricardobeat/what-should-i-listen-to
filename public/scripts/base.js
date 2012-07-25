@@ -1,13 +1,10 @@
 (function() {
   var makeNoise;
+
   makeNoise = function(opacity) {
     var canvas, ctx, n, noise, x, y, _ref, _ref2;
-    if (opacity == null) {
-      opacity = 0.2;
-    }
-    if (!document.createElement('canvas').getContext) {
-      return false;
-    }
+    if (opacity == null) opacity = 0.2;
+    if (!document.createElement('canvas').getContext) return false;
     if ((window.localStorage != null) && window.localStorage["noise-" + opacity]) {
       noise = window.localStorage["noise-" + opacity];
     } else {
@@ -29,7 +26,9 @@
     }
     return document.getElementsByTagName('html')[0].style.backgroundImage = "url(" + noise + ")";
   };
+
   makeNoise(.2);
+
   jQuery(function($) {
     var artist, errorMessage, phrase, phrases, recommend, showRecommendation, username;
     recommend = $('#recommend');
@@ -48,11 +47,11 @@
       } else {
         errorMessage.hide();
       }
-      artist.html(("<a href=\"http://grooveshark.com/#/search?q=" + (escape(result)) + "\">result</a>") || 'The Beatles');
+      artist.html(("<a href=\"http://grooveshark.com/#/search?q=" + (escape(result)) + "\">" + result + "</a>") || 'The Beatles');
       recommend.text('Try again');
       return recommend.addClass('used');
     };
-    return recommend.click(function(e) {
+    recommend.click(function(e) {
       var user;
       e.preventDefault();
       user = username.val();
@@ -67,20 +66,10 @@
       });
       return (typeof _gaq !== "undefined" && _gaq !== null) && _gaq.push(['_trackEvent', 'What should I listen to?', 'Recommendation', user]);
     });
-    user = username.val();
-    user && window.localStorage && (localStorage.username = user);
-    user || (user = 'superbife');
-    $.ajax({
-      url: "/recommend/" + user,
-      success: showRecommendation, 
-      error: showRecommendation,
-      type: 'GET',
-      dataType: 'text'
-    });
-    (typeof _gaq !== "undefined" && _gaq !== null) && _gaq.push(['_trackEvent', 'What should I listen to?', 'Recommendation', user]);
     return recommend.next('form').submit(function(e) {
       e.preventDefault();
       return recommend.click();
     });
   });
+
 }).call(this);
